@@ -1,0 +1,8 @@
+Your main text for this class:
+
+"Python 3 Object-oriented Programming" by Dusty Phillips
+https://www.safaribooksonline.com/library/view/python-3-object-oriented/9781784398781/
+
+Extra resource:
+The "Classes" Chapter in the Python tutorial docs
+https://docs.python.org/3/tutorial/classes.html

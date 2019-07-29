@@ -1,0 +1,81 @@
+This class focuses on Python 3. When applying what you've learned to
+Python 2.7 code, here are the most important differences.
+
+1) Everything Inherits From "object"
+
+In Python 3, every class you create automatically inherits from a
+built-in base class called "object". In Python 2, this doesn't happen
+unless you do it explicitly:
+
+----
+# "object" required in Python 2.
+class Pet(object):
+    def __init__(self, name):
+        self.name = name
+----
+
+(Yes, "object" is lower-case.) If you fail to inherit from object -
+i.e. you just write "class Pet:" - you are using what's called
+"old-style classes". Many features we cover in this course do not work
+with old-style classes; they have no place in modern Python, and have
+not for years. STARTING TODAY, MAKE EVERY SINGLE CLASS YOU CREATE IN
+PYTHON 2 INHERIT FROM OBJECT.
+
+
+2) Using super()
+
+When using single inheritance (which is what we focus on in class),
+you call super() with no arguments. But in Python 2, super() requires
+two boilerplate arguments. The first is always the name of the
+*current* class. The second is always "self":
+
+----
+# Imagine a "Dog" class, which we'll extend:
+class LapDog(Dog):
+    def speak(self):
+        return "Yip!"
+
+# Python 3 version:
+class LoudLapDog(LapDog):
+    def speak(self):
+       # super().speak() refers to LapDog.speak()
+       return super().speak().upper() * 3
+    
+# Python 2 version:
+class LoudLapDog(LapDog):
+    def speak(self):
+       # must pass these two arguments to super()
+       return super(LoudLapDog, self).speak().upper() * 3
+----
+
+
+3) Metaclasses
+
+When using a metaclass, you declare it differently in Python
+2. Instead of passing a keyword argument in the inheritance field
+(i.e. the optional parentheses after the name of the class), you
+instead define a variable called __metaclass__ in the class itself:
+
+----
+import abc
+
+# Python 3 version:
+# metclass is keyword argument
+class Pet(metaclass=abc.ABCMeta):
+    def __init__(self, name):
+        self.name = name
+    @abc.abstractmethod
+    def describe(self):
+        pass
+
+# Python 2 version:
+# use __metaclass__ variable
+class Pet(object):
+    __metaclass__ = abc.ABCMeta
+    def __init__(self, name):
+        self.name = name
+    @abc.abstractmethod
+    def describe(self):
+        pass
+----
+
