@@ -14,8 +14,14 @@ class  Person:
         self.first = first
         self.last = last
 
-person = Person("John", "Smith")
+    def full_name(self):
+        return self.first + " " + self.last
 
+    def formal_name(self, titlr):
+        return title + " " + self.full_name()
+
+
+person = Person("John", "Smith")
 
 print(person.first)
 print(person.last)

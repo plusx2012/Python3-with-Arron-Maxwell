@@ -46,6 +46,22 @@ True
 
 # Write your code here:
 
+class Invoice:
+    def __init__(self, number,  customer, amount):
+        self.number = number
+        self.customer = customer
+        self.amount = amount
+        self.total_payments = 0
+
+    def add_payment(self, value):
+        self.total_payments = self.total_payments + value
+
+    def is_fully_paid(self):
+        return self.total_payments >= self.amount
+
+    def amount_due(self):
+        return self.amount - self.total_payments
+
 
 
 # Do not edit any code below this line!
@@ -57,3 +73,4 @@ if __name__ == '__main__':
         print('*** ALL TESTS PASS ***\nGive someone a HIGH FIVE!')
 
 # Copyright 2015-2018 Aaron Maxwell. All rights reserved.
+
