@@ -85,6 +85,28 @@ Critters can describe themselves, which we'll use in the user interface:
 
 # Write your code here:
 
+class Critter:
+
+class Goblin(Critter):
+    hitpoins = 10
+    damage = 3
+    def __init__(self, name):
+        self.name =  name
+
+    def is_allive(self):
+        return self.hitpoins <= 0
+
+
+class Orc(Critter):
+    hitpoins = 15
+    damage = 5
+    def __init__(self, name):
+        self.name = name
+
+    def is_allive(self):
+        return self.hitpoins <= 0
+
+
 
 
 # Do not edit any code below this line!
